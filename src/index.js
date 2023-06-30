@@ -8,10 +8,4 @@ import { submitHundler } from "./js/templateStringHandler.js";
 
 // instance.show()
 
-const refs = {
-    form: document.querySelector('#form'),
-    input: document.querySelector('#add'),
-    jsMarkup: document.querySelector('.jsmarkup')
-}
-
-refs.form.addEventListener("submit", submitHundler);
+form.addEventListener("submit", submitHundler);
