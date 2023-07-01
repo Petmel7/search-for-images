@@ -1,6 +1,6 @@
 export default {
-    form: document.querySelector("#form"),
-    list: document.querySelector("#list"),
-    input: document.querySelector("#input"),
     root: document.querySelector("#root"),
+    form: document.querySelector("#form"),
+    input: document.querySelector("#input"),
+    jsmarkup: document.querySelector(".jsmarkup"),
 }
