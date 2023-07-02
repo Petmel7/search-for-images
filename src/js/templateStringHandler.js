@@ -1,1 +1,1 @@
-export const creatLi = ({ text }) => `<li>${text}</li>`
+export const creatLi = ({ text, id }) => `<li>${text}<button data-id='${id}'>Delete</button></li>`
