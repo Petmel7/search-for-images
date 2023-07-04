@@ -8,3 +8,18 @@ import "./styles/style.css";
 refs.form.addEventListener("submit", submitHundler);
 window.addEventListener("DOMContentLoaded", getTask);
 refs.jsmarkup.addEventListener('click', deleteHandler);
+
+const getUsers = () => {
+    return fetch('https://jsonplaceholder.typicode.com/users')
+        .then((result) => result.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
+}
+
+// getUsers();
+
+const getUsersAsync = async () => {
+    const result = await fetch('https://jsonplaceholder.typicode.com/users')
+    const dataFromServer = result.json();
+    console.log(dataFromServer);
+}

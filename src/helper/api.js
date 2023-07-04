@@ -51,3 +51,10 @@ export function deleteTaskAxios(id) {
     .catch((error) => console.log(error));
 }
 
+export function putTaskAxios(id, value) {
+    axios.put(`http://localhost:7777/items/${id}`, { text: value })
+        .then((result) =>
+            refs.jsmarkup.insertAdjacentHTML("beforeend", creatLi(result.data)))
+    .catch((error) => console.log(error));
+}
+
