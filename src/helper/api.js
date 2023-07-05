@@ -57,4 +57,3 @@ export function putTaskAxios(id, value) {
             refs.jsmarkup.insertAdjacentHTML("beforeend", creatLi(result.data)))
     .catch((error) => console.log(error));
 }
-

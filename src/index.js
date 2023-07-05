@@ -19,7 +19,15 @@ const getUsers = () => {
 // getUsers();
 
 const getUsersAsync = async () => {
-    const result = await fetch('https://jsonplaceholder.typicode.com/users')
-    const dataFromServer = result.json();
-    console.log(dataFromServer);
+    try {
+        const result = await fetch('https://jsonplaceholder.typicode.com/users')
+        // const todos = await fetch('https://jsonplaceholder.typicode.com/todos')
+        const dataFromServer = await result.json();
+        console.log(dataFromServer);
+        // return dataFromServer;
+    } catch (error) {
+        console.log('Error');
+    }
 }
+
+getUsersAsync();
