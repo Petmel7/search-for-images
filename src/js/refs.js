@@ -3,4 +3,5 @@ export default {
     form: document.querySelector("#form"),
     input: document.querySelector("#input"),
     jsmarkup: document.querySelector(".jsmarkup"),
+    button: document.querySelector(".submit"),
 }

@@ -1,4 +1,81 @@
+/* Стилі для зображень */
+
 body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.jsmarkup {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    column-gap: 20px;
+    row-gap: 20px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    display: block;
+    width: 300px;
+}
+
+P {
+    margin-bottom: 0;
+}
+
+
+/* Стилі для форми пошуку */
+
+#form {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+    margin: 0;
+}
+
+#input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit :hover {
+    background-color: #0069d9;
+}
+
+.load-more {
+    text-align: center;
+}
+
+
+/* Стилі для створення і видалення елементів */
+
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -16,8 +93,6 @@ ul {
 }
 
 .jsmarkup {
-    /* display: grid;
-    grid-template-columns: 300px 300px 300px; */
     column-gap: 20px;
     row-gap: 20px;
     padding: 0;
@@ -31,8 +106,6 @@ ul {
     display: flex;
     justify-content: space-between;
     background-color: silver;
-    /* padding-top: 10px;
-    padding-bottom: 10px; */
     padding: 10px;
     margin: 0;
     border-radius: 4px;
@@ -59,16 +132,11 @@ li {
 img {
     display: block;
     width: 300px;
-}
-
-[data-id] {
-    /* margin-left: 750px; */
-}
-
+} */
 
 /* Стилі для форми пошуку */
 
-#form {
+/* #form {
     text-align: center;
     margin-right: auto;
     margin-left: auto;
@@ -98,4 +166,4 @@ img {
 
 .load-more {
     text-align: center;
-}
+} */

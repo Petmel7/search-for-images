@@ -32,28 +32,38 @@ import { createList, deleteUi } from "../js/handlers.js";
 
 // !Код axios
 
-export function createTaskAxios(value) {
-    axios.post("http://localhost:7777/items", { text: value })
-        .then((result) =>
-            refs.jsmarkup.insertAdjacentHTML("beforeend", creatLi(result.data)))
-            .catch((error) => console.log(error));
-}
+// export function createTaskAxios(value) {
+//     axios.post("http://localhost:7777/items", { text: value })
+//         .then((result) =>
+//             refs.jsmarkup.insertAdjacentHTML("beforeend", creatLi(result.data)))
+//             .catch((error) => console.log(error));
+// }
 
-export function getTask() {
-    axios.get("http://localhost:7777/items")
-        .then((result) => createList(result.data))
-        .catch((error) => console.log(error));
-}
+// export function getTask() {
+//     axios.get("http://localhost:7777/items")
+//         .then((result) => createList(result.data))
+//         .catch((error) => console.log(error));
+// }
 
-export function deleteTaskAxios(id) {
-    axios.delete(`http://localhost:7777/items/${id}`)
-    .then((result) => deleteUi(id))
-    .catch((error) => console.log(error));
-}
+// export function deleteTaskAxios(id) {
+//     axios.delete(`http://localhost:7777/items/${id}`)
+//     .then((result) => deleteUi(id))
+//     .catch((error) => console.log(error));
+// }
 
-export function putTaskAxios(id, value) {
-    axios.put(`http://localhost:7777/items/${id}`, { text: value })
-        .then((result) =>
-            refs.jsmarkup.insertAdjacentHTML("beforeend", creatLi(result.data)))
-    .catch((error) => console.log(error));
-}
+// export function putTaskAxios(id, value) {
+//     axios.put(`http://localhost:7777/items/${id}`, { text: value })
+//         .then((result) =>
+//             refs.jsmarkup.insertAdjacentHTML("beforeend", creatLi(result.data)))
+//     .catch((error) => console.log(error));
+// }
+
+//! Пошук зображень
+
+// export function getImage() {
+//     axios.get("https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=что_искать&page=номер_страницы&per_page=12&key=22926721-5d20aa08498ffd1ff2f906542")
+//         .then((result) => console.log(result))
+//         .catch((error) => console.log(error));
+// }
+
+// getImage()

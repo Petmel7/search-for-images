@@ -1,33 +1,76 @@
 import * as basicLightbox from 'basiclightbox';
 import "../node_modules/basiclightbox/dist/basicLightbox.min.css";
-import { submitHundler, deleteHandler } from "./js/handlers.js";
-import { getTask } from './helper/api';
+// import { submitHundler, deleteHandler } from "./js/handlers.js";
+// import { getTask } from './helper/api';
 import refs from "./js/refs.js";
 import "./styles/style.css";
 
-refs.form.addEventListener("submit", submitHundler);
-window.addEventListener("DOMContentLoaded", getTask);
-refs.jsmarkup.addEventListener('click', deleteHandler);
+//!Імпорти пошуку зображень
 
-const getUsers = () => {
-    return fetch('https://jsonplaceholder.typicode.com/users')
-        .then((result) => result.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.log(error));
+import axios from "axios";
+// import { getImage } from "./helper/api.js";
+import imagesHbs  from "../src/templates/marking.hbs";
+
+// refs.form.addEventListener("submit", submitHundler);
+// window.addEventListener("DOMContentLoaded", getTask);
+// refs.jsmarkup.addEventListener('click', deleteHandler);
+
+// const getUsers = () => {
+//     return fetch('https://jsonplaceholder.typicode.com/users')
+//         .then((result) => result.json())
+//         .then((data) => console.log(data))
+//         .catch((error) => console.log(error));
+// }
+
+// // getUsers();
+
+// const getUsersAsync = async () => {
+//     try {
+//         const result = await fetch('https://jsonplaceholder.typicode.com/users')
+//         // const todos = await fetch('https://jsonplaceholder.typicode.com/todos')
+//         const dataFromServer = await result.json();
+//         console.log(dataFromServer);
+//         // return dataFromServer;
+//     } catch (error) {
+//         console.log('Error');
+//     }
+// }
+
+// // getUsersAsync();
+
+//!Пошук зображень
+
+// refs = {
+//     form: document.querySelector("#form"),
+//     input: document.querySelector("#input"),
+//     button: document.querySelector(".submit"),
+//     jsmarkup: document.querySelector(".jsmarkup")
+// }
+
+const handlerSubmit = (e) => {
+    e.preventDefault()
+    const value = refs.input.value;
+
+    axios.get(`https://pixabay.com/api/?key=22926721-5d20aa08498ffd1ff2f906542&q=yellow+flowers&image_type=photo`)
+        .then(response => {
+            renderCollection(response.data.hits)
+            // console.log(response.data.hits)
+            clearInput();
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
 
-// getUsers();
+function renderCollection(hits) {
+    refs.jsmarkup.innerHTML = '';
 
-const getUsersAsync = async () => {
-    try {
-        const result = await fetch('https://jsonplaceholder.typicode.com/users')
-        // const todos = await fetch('https://jsonplaceholder.typicode.com/todos')
-        const dataFromServer = await result.json();
-        console.log(dataFromServer);
-        // return dataFromServer;
-    } catch (error) {
-        console.log('Error');
-    }
+    const markup = imagesHbs(hits)
+    refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
 }
 
-getUsersAsync();
+function clearInput() {
+    refs.input.value = "";
+}
+
+refs.form.addEventListener("submit", handlerSubmit);
