@@ -8,8 +8,9 @@ import "./styles/style.css";
 //!Імпорти пошуку зображень
 
 import axios from "axios";
-// import { getImage } from "./helper/api.js";
-import imagesHbs  from "../src/templates/marking.hbs";
+import 'pnotify/dist/PNotify.css';
+// import imagesHbs from "../src/templates/marking.hbs";
+// PNotify.alert('Це приклад повідомлення PNotify!');
 
 // refs.form.addEventListener("submit", submitHundler);
 // window.addEventListener("DOMContentLoaded", getTask);
@@ -40,13 +41,6 @@ import imagesHbs  from "../src/templates/marking.hbs";
 
 //!Пошук зображень
 
-// refs = {
-//     form: document.querySelector("#form"),
-//     input: document.querySelector("#input"),
-//     button: document.querySelector(".submit"),
-//     jsmarkup: document.querySelector(".jsmarkup")
-// }
-
 const handlerSubmit = (e) => {
     e.preventDefault()
     const value = refs.input.value;
@@ -63,7 +57,6 @@ const handlerSubmit = (e) => {
 }
 
 function renderCollection(hits) {
-    refs.jsmarkup.innerHTML = '';
 
     const markup = imagesHbs(hits)
     refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
@@ -73,4 +66,36 @@ function clearInput() {
     refs.input.value = "";
 }
 
+function eventTarget(event) {
+    if (event.target.tagName === "IMG") {
+        clickBasicLightbox(event.target) 
+    }
+}
+
+function clickBasicLightbox(img) {
+    const instance = basicLightbox.create(`
+    <img src="${img.src}" width="800" height="600">
+`)
+
+    instance.show();
+}
+refs.jsmarkup.addEventListener("click", eventTarget);
 refs.form.addEventListener("submit", handlerSubmit);
+
+
+
+//!Другий варіант рішення
+
+// refs.jsmarkup.addEventListener("click", function (event) {
+//     if (event.target.tagName === "IMG") {
+//     clickBasicLightbox(event.target);
+//     }
+// });
+
+// function clickBasicLightbox(img) {
+//     const instance = basicLightbox.create(`
+//     <img src="${img.src}" width="800" height="600">
+//     `);
+
+//     instance.show();
+// }

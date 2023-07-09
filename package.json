@@ -17,7 +17,8 @@
     "clean-webpack-plugin": "^4.0.0",
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.3",
-    "nanoid": "^4.0.2"
+    "nanoid": "^4.0.2",
+    "pnotify": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
