@@ -4,5 +4,5 @@ export default {
     input: document.querySelector("#input"),
     jsmarkup: document.querySelector(".jsmarkup"),
     button: document.querySelector(".submit"),
-    // liImg: document.querySelector("li img")
+    more: document.querySelector("#more")
 }

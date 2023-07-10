@@ -41,19 +41,18 @@ import imagesHbs from "../src/templates/marking.hbs";
 
 //!Пошук зображень
 
-let curentPage = 1;
+let currentPage = 1;
 
 const handlerSubmit = (e) => {
     e.preventDefault()
     const value = refs.input.value;
 
-    axios.get(`https://pixabay.com/api/?key=22926721-5d20aa08498ffd1ff2f906542&q=${value}&image_type=photo&${curentPage}`)
+    axios.get(`https://pixabay.com/api/?key=22926721-5d20aa08498ffd1ff2f906542&q=${value}&image_type=photo&${currentPage}`)
         .then(response => {
             renderCollection(response.data.hits)
-            // console.log(response.data.hits)
             clearInput();
         })
-        .then(() => curentPage++)
+        .then(() => currentPage++)
         .catch(error => {
             console.log(error);
         });
@@ -71,7 +70,7 @@ function clearInput() {
 
 function eventTarget(event) {
     if (event.target.tagName === "IMG") {
-        clickBasicLightbox(event.target) 
+        clickBasicLightbox(event.target)
     }
 }
 
@@ -82,8 +81,10 @@ function clickBasicLightbox(img) {
 
     instance.show();
 }
+
 refs.jsmarkup.addEventListener("click", eventTarget);
 refs.form.addEventListener("submit", handlerSubmit);
+refs.more.addEventListener("click", handlerSubmit);
 
 
 
@@ -104,18 +105,62 @@ refs.form.addEventListener("submit", handlerSubmit);
 // }
 
 
-
-const scene = new ScrollMagic.Scene();
-
-const triggerElement = document.querySelector('.trigger-element');
-scene.triggerElement(triggerElement);
-
-const targetElement = document.querySelector('.target-element');
-scene.setClassToggle(targetElement, 'active');
-
-const controller = new ScrollMagic.Controller();
-controller.addScene(scene);
-
-controller.update();
+// function clikcDelete() {
+//     if (value !== value) {
+//         refs.jsmarkup.innerHTML = "";
+//     }
+// }
 
 
+
+// let currentPage = 1;
+
+// const handlerSubmit = (e) => {
+//     e.preventDefault();
+//     const value = refs.input.value;
+
+//     axios
+//         .get(`https://pixabay.com/api/?key=22926721-5d20aa08498ffd1ff906542&q=${value}&image_type=photo&page=${currentPage}`)
+//         .then(response => {
+//             renderCollection(response.data.hits);
+//             clearInput();
+//             currentPage++;
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+// };
+
+// function renderCollection(hits) {
+//     const markup = imagesHbs(hits);
+//     refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
+// }
+
+// function clearInput() {
+//     refs.input.value = "";
+// }
+
+// function eventTarget(event) {
+//     if (event.target.tagName === "IMG") {
+//         clickBasicLightbox(event.target);
+//     }
+// }
+
+// function clickBasicLightbox(img) {
+//     const instance = basicLightbox.create(`
+//     <img src="${img.src}" width="800" height="600">
+// `);
+
+//     instance.show();
+// }
+
+// function loadMoreImages() {
+//     handlerSubmit(new Event("submit"));
+// }
+
+// refs.jsmarkup.addEventListener("click", eventTarget);
+// refs.form.addEventListener("submit", handlerSubmit);
+// refs.more.addEventListener("click", loadMoreImages);
+// refs.form.addEventListener("submit", () => {
+//     window.location.reload();
+// });
