@@ -8,8 +8,8 @@ import "./styles/style.css";
 //!Імпорти пошуку зображень
 
 import axios from "axios";
-import 'pnotify/dist/PNotify.css';
-// import imagesHbs from "../src/templates/marking.hbs";
+// import 'pnotify/dist/PNotify.css';
+import imagesHbs from "../src/templates/marking.hbs";
 // PNotify.alert('Це приклад повідомлення PNotify!');
 
 // refs.form.addEventListener("submit", submitHundler);
@@ -41,16 +41,19 @@ import 'pnotify/dist/PNotify.css';
 
 //!Пошук зображень
 
+let curentPage = 1;
+
 const handlerSubmit = (e) => {
     e.preventDefault()
     const value = refs.input.value;
 
-    axios.get(`https://pixabay.com/api/?key=22926721-5d20aa08498ffd1ff2f906542&q=yellow+flowers&image_type=photo`)
+    axios.get(`https://pixabay.com/api/?key=22926721-5d20aa08498ffd1ff2f906542&q=${value}&image_type=photo&${curentPage}`)
         .then(response => {
             renderCollection(response.data.hits)
             // console.log(response.data.hits)
             clearInput();
         })
+        .then(() => curentPage++)
         .catch(error => {
             console.log(error);
         });
@@ -99,3 +102,20 @@ refs.form.addEventListener("submit", handlerSubmit);
 
 //     instance.show();
 // }
+
+
+
+const scene = new ScrollMagic.Scene();
+
+const triggerElement = document.querySelector('.trigger-element');
+scene.triggerElement(triggerElement);
+
+const targetElement = document.querySelector('.target-element');
+scene.setClassToggle(targetElement, 'active');
+
+const controller = new ScrollMagic.Controller();
+controller.addScene(scene);
+
+controller.update();
+
+
