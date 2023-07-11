@@ -51,14 +51,15 @@ const handlerSubmit = (e) => {
         .then(response => {
             renderCollection(response.data.hits)
             clearInput();
+            currentPage++
         })
-        .then(() => currentPage++)
         .catch(error => {
             console.log(error);
         });
 }
 
 function renderCollection(hits) {
+    // refs.jsmarkup.innerHTML = "";
 
     const markup = imagesHbs(hits)
     refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
@@ -103,64 +104,3 @@ refs.more.addEventListener("click", handlerSubmit);
 
 //     instance.show();
 // }
-
-
-// function clikcDelete() {
-//     if (value !== value) {
-//         refs.jsmarkup.innerHTML = "";
-//     }
-// }
-
-
-
-// let currentPage = 1;
-
-// const handlerSubmit = (e) => {
-//     e.preventDefault();
-//     const value = refs.input.value;
-
-//     axios
-//         .get(`https://pixabay.com/api/?key=22926721-5d20aa08498ffd1ff906542&q=${value}&image_type=photo&page=${currentPage}`)
-//         .then(response => {
-//             renderCollection(response.data.hits);
-//             clearInput();
-//             currentPage++;
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         });
-// };
-
-// function renderCollection(hits) {
-//     const markup = imagesHbs(hits);
-//     refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
-// }
-
-// function clearInput() {
-//     refs.input.value = "";
-// }
-
-// function eventTarget(event) {
-//     if (event.target.tagName === "IMG") {
-//         clickBasicLightbox(event.target);
-//     }
-// }
-
-// function clickBasicLightbox(img) {
-//     const instance = basicLightbox.create(`
-//     <img src="${img.src}" width="800" height="600">
-// `);
-
-//     instance.show();
-// }
-
-// function loadMoreImages() {
-//     handlerSubmit(new Event("submit"));
-// }
-
-// refs.jsmarkup.addEventListener("click", eventTarget);
-// refs.form.addEventListener("submit", handlerSubmit);
-// refs.more.addEventListener("click", loadMoreImages);
-// refs.form.addEventListener("submit", () => {
-//     window.location.reload();
-// });
